@@ -1,0 +1,13 @@
+footer {
+    background-color: #113450;
+    background-color: rgba(17, 52, 80, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+footer p {
+    color: white;
+    margin: 0;
+}

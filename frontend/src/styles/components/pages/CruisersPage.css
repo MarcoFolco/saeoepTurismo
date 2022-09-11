@@ -1,0 +1,23 @@
+main section.main-info div.cruisers .col img {
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+    height: 325px;
+    border-radius: 40%;
+}
+
+main section.main-info div.discounts .col p {
+   width: 32.5%;
+   padding: 0 17px;
+}
+
+main section.main-info div.discounts .col:not(.discounts-title) p {
+    border-radius: 50rem;
+    border-left: 3px double rgba(255, 255, 255, 0.521);
+    border-right: 3px double rgba(255, 255, 255, 0.521);
+    background-color: rgba(76, 99, 122, 0.185);
+    box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

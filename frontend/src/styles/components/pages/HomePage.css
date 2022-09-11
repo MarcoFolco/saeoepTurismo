@@ -1,0 +1,89 @@
+main {
+    background-color: var(--primary-color-faded);
+    border-radius: 12px;
+    box-shadow: 0 0 3px 2px rgb(0 0 0 / 20%);
+    color: #eee4e4;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main.bg-active::after {
+    content: "";
+    background: url(../../../../public/images/main-bg.jpg) center;
+    background-size: cover;
+    top: 1.5rem;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    border-radius: 12px;
+    opacity: 0.8;
+    position: absolute;
+    z-index: -1;
+    box-shadow: 0px 7px 10px 4px rgba(0,0,0,0.9);
+}
+
+main section.main-info div .col img {
+    width: 100%;
+    height: 275px;
+    transition: filter 1s;
+    box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
+    border-radius: 45%;
+}
+
+main section.main-info div.home-gallery .col:nth-child(even) img {
+    animation: breathe-img 2s ease-in-out 1s infinite;
+}
+
+main section.main-info div.home-gallery .col:nth-child(odd) img {
+    animation: breathe-img 2s ease-in-out 2s infinite;
+}
+
+main section.main-info div.home-gallery .col:nth-child(even) {
+    animation: breathe 2s ease-in-out 1s infinite;
+}
+
+main section.main-info div.home-gallery .col:nth-child(odd) {
+    animation: breathe 2s ease-in-out 2s infinite;
+}
+
+main section.main-info div.home-gallery .col:hover img {
+    filter: blur(5px);
+}
+
+main section.main-info div.home-gallery .col p {
+    top: calc(50% - 10px);
+    left: 0;
+    opacity: 0;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    font-size: 3.3rem;
+    transition: opacity 1.5s;
+}
+main section.main-info div.home-gallery .col p span {
+    background-color: rgba(142, 153, 176, 0.45);
+    box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 90%;
+}
+
+main section.main-info div.home-gallery .col:hover p {
+    opacity: 1;
+}
+
+@media screen and (max-width: 720px) {
+    main section.main-info div.home-gallery .col p {
+        font-size: 2.6rem;
+    }
+}
+
+@keyframes breathe {
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes breathe-img {
+    50% {
+        box-shadow: 0px 8px 5px 0 rgba(0,0,0,0.4);
+    }
+}

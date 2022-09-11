@@ -1,0 +1,31 @@
+div.bg {
+  background: url(../public/images/page-bg.jpg) no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+main section.main-info div.travels div::after, main section.main-info div.discounts div:not(.discounts-title)::after {
+  content: "";
+  background: url(../public/images/main-bg.jpg) center;
+  top: 0;
+  left: 0.8rem;
+  bottom: 0;
+  right: 0.8rem;
+  border-radius: 12px;
+  opacity: 0.8;
+  position: absolute;
+  z-index: -1;
+  box-shadow: 0px 7px 10px 4px rgba(0,0,0,0.9);
+}
+
+main section.main-info div.travels p.travel-title span, main section.main-info div.travels p.travel-price span, main section.main-info div.discounts .col.discounts-title p span  {
+  background-color: rgba(76, 99, 122, 0.185);
+  border-radius: 5px;
+  box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
+}

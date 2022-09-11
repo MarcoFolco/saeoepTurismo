@@ -1,0 +1,61 @@
+header {
+    background-color: var(--primary-color-faded);
+    box-shadow: 0 0 3px 2px rgb(0 0 0 / 30%);
+    border-radius: 12px;
+}
+
+header section.header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 25px;
+}
+
+#header-icon {
+    width: 90px;
+}
+
+header h1 {
+    color: white;
+    font-size: 4rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+}
+
+/*  Imagenes del carousel - Hecho de esta forma para mejor resolucion de las imagenes */
+
+
+#carouselHeader .carousel-inner {
+    height: 380px;
+}
+
+#carouselHeader .carousel-inner .carousel-item div {
+    background: no-repeat center;
+    background-size: cover;
+}
+
+#carouselHeader .carousel-inner .carousel-item:nth-child(1) div {
+    background-image: url(../../../../public/images/header-0.jpg);
+}
+
+#carouselHeader .carousel-inner .carousel-item:nth-child(2) div {
+    background-image: url(../../../../public/images/header-1.jpg);
+}
+
+#carouselHeader .carousel-inner .carousel-item:nth-child(3) div {
+    background-image: url(../../../../public/images/header-2.jpg);
+}
+
+#carouselHeader .carousel-inner .carousel-item:nth-child(4) div {
+    background-image: url(../../../../public/images/header-3.jpg);
+}
+
+#carouselHeader .carousel-inner .carousel-item:nth-child(5) div {
+    background-image: url(../../../../public/images/header-4.jpg);
+}
+
+@media screen and (max-width: 720px) {
+    #carouselHeader .carousel-inner {
+        height: 200px;
+    }
+}
