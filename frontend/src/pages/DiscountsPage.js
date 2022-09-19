@@ -69,7 +69,7 @@ const Discounts = (props) => {
                         <div className="col position-relative d-flex justify-content-evenly pt-2 ps-3 pe-3" key={discount.id}>
                             <p className="fs-2 fw-bold text-center"><span className="ps-3 pe-3">{discount.enterprise}</span></p>
                             <p className="fs-2 fw-bold text-center"><span className="ps-3 pe-3">{discount.places}</span></p>
-                            <p className="fs-2 fw-bold text-center"><span className="ps-3 pe-3">{discount.value}</span></p>
+                            <p className="fs-2 fw-bold text-center"><span className="ps-3 pe-3">{discount.value} %</span></p>
                         </div>
                     ))}
                 </div>

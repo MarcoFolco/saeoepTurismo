@@ -1,7 +1,7 @@
 import React from "react";
 import "./../../styles/components/layout/Header.css";
 // Imports de layout
-import Nav from './Nav';
+import Navigation from './Nav';
 
 const Header = (props) => {
     return (
@@ -51,7 +51,7 @@ const Header = (props) => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </section>
-            <Nav/>
+            <Navigation/>
         </header>
     )
 }
