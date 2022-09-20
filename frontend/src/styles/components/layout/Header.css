@@ -29,6 +29,10 @@ header h1 {
     height: 380px;
 }
 
+#carouselHeader .carousel-inner .carousel-item {
+    height: 100%;
+}
+
 #carouselHeader .carousel-inner .carousel-item div {
     background: no-repeat center;
     background-size: cover;
