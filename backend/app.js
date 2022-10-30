@@ -8,6 +8,7 @@ require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/admin/login');
+var newsRouter = require('./routes/admin/news');
 
 
 var app = express();
@@ -26,11 +27,26 @@ app.use(session({
   secret: 'qX7W59Nc&fz#',
   resave: false,
   saveUninitialized: true
-}))
+}));
+
+secured = async (req, res, next) => {
+  try {
+    if (req.session.user_id) {
+      next();
+    } else {
+      res.redirect('/admin/login');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 app.use('/', indexRouter);
 
 // Admin
 app.use('/admin/login', loginRouter);
+
+app.use('/admin/news', secured, newsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

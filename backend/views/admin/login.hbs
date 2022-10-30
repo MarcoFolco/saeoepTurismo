@@ -3,21 +3,24 @@
         Inicio de sesión<br/>
         <small class="fs-2 px-4">Por favor complete los datos del formulario para ingresar al sistema.</small>
     </h2>
-    <form class="needs-validation" noValidate>
+    <form class="needs-validation" noValidate action="/admin/login" method="post">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control fs-4" id="name" placeholder="user123" required/>
-            <label for="name" class="text-secondary fw-bold fs-6">Usuario</label>
+            <input type="text" class="form-control fs-4" id="inputUsername" placeholder="User" name="user" required/>
+            <label for="inputUsername" class="text-secondary fw-bold fs-6">Usuario</label>
             <div class="invalid-feedback fs-5 fw-bold">
                 Este campo es requerido
             </div>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" class="form-control fs-4" id="password" placeholder="passwd" required/>
-            <label for="password" class="text-secondary fw-bold fs-6">Contraseña</label>
+            <input type="password" class="form-control fs-4" id="inputPassword" placeholder="Password" name="password" required/>
+            <label for="inputPassword" class="text-secondary fw-bold fs-6">Contraseña</label>
             <div class="invalid-feedback fs-5 fw-bold">
                 Este campo es requerido
             </div>
         </div>
         <button type="submit" class="btn fs-4 text-white fw-bold">Iniciar sesión</button>
     </form>
+    {{#if error}}
+        <small class="fs-5 fw-bold" style="color: red;">Usuario o clave incorrecta.</small>
+    {{/if}}
 </section>

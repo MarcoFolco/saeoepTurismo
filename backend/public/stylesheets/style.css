@@ -26,6 +26,7 @@ header {
   background-color: var(--primary-color-faded);
   box-shadow: 0 0 3px 2px rgb(0 0 0 / 30%);
   border-radius: 12px;
+  position: relative;
 }
 
 header section.header-title {
@@ -44,6 +45,12 @@ header h1 {
   font-size: 4rem;
   font-family: 'Cinzel', serif;
   font-weight: 500;
+}
+
+header .logout-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 div.bg {
