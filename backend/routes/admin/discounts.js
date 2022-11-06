@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var travelsModel = require('./../../models/travelsModel');
+var discountsModel = require('./../../models/discountsModel');
 
 router.get('/', async function(req, res, next) {
-    var travels = await travelsModel.getTravels();
-    res.render('admin/travels', {
+    var discounts = await discountsModel.getDiscounts();
+    res.render('admin/discounts', {
         layout: 'admin/layout',
         user: req.session.username,
-        travels,
+        discounts,
     });
 });
 
 router.get('/add', (req, res, next) => {
-    res.render('admin/addTravel', {
+    res.render('admin/addDiscount', {
         layout: 'admin/layout',
         user: req.session.username,
     });
@@ -20,11 +20,11 @@ router.get('/add', (req, res, next) => {
 
 router.post('/add', async (req, res, next) => {
     try {
-        if (req.body.title && req.body.img_name && req.body.page_fk && req.body.dates && req.body.assets && req.body.hotel && req.body.price) {
-            await travelsModel.insertTravel(req.body);
-            res.redirect('/admin/travels');
+        if (req.body.enterprise_fk && req.body.places && req.body.value) {
+            await discountsModel.insertDiscount(req.body);
+            res.redirect('/admin/discounts');
         } else {
-            res.render('admin/addTravel', {
+            res.render('admin/addDiscount', {
                 layout: 'admin/layout',
                 user: req.session.username,
                 error: true,
@@ -33,10 +33,10 @@ router.post('/add', async (req, res, next) => {
         }
     } catch (error) {
         console.log(error);
-        res.render('admin/addTravel', {
+        res.render('admin/addDiscount', {
             layout: 'admin/layout',
             error: true,
-            message: 'The travel was not inserted',
+            message: 'The discount was not inserted',
             user: req.session.username,
         })
     }

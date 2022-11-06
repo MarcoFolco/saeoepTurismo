@@ -1,0 +1,24 @@
+<section class="dashboard-section w-100 h-100 p-4">
+    <div class="row">
+        <div class="col title">
+            <h2 class="fw-bold text-center text-white display-3"> Enterprises management </h2>
+            <div class="text-right">
+                <a href="/admin/enterprises/add" class="btn btn-success">
+                    <i class="fa fa-plus"></i> New enterprise
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="header admin-grid">
+        <span class="admin-header--field">#</span>
+        <span class="admin-header--field">Name</span>
+        <span class="admin-header--field">Actions</span>
+    </div>
+    {{#each enterprises}}
+    <div class="content admin-grid">
+        <div class="admin-header--field"><span>{{id}}</span></div>
+        <div class="admin-header--field"><span>{{name}}</span></div>
+        <div class="admin-header--field"><span><i class="fa fa-pencil" style="margin-right: 15px;"></i><i class="fa fa-trash"></i></span></div>
+    </div>
+    {{/each}}
+</section>

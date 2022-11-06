@@ -1,14 +1,14 @@
 var pool = require('./bd');
 
-async function getTravels() {
-    var query = "select * from travels order by id desc";
+async function getDiscounts() {
+    var query = "select * from discounts order by id desc";
     var rows = await pool.query(query);
     return rows;
 }
 
-async function insertTravel(obj) {
+async function insertDiscount(obj) {
     try {
-        var query = "insert into travels set ? ";
+        var query = "insert into discounts set ? ";
         var rows = await pool.query(query, [obj]);
         return rows;
     } catch (error) {
@@ -17,9 +17,9 @@ async function insertTravel(obj) {
     }
 }
 
-async function deleteTravel(id) {
+async function deleteDiscount(id) {
     try {
-        var query = "delete from travels where id = ? ";
+        var query = "delete from discounts where id = ? ";
         var rows = await pool.query(query, [id]);
         return rows;
     } catch (error) {
@@ -28,4 +28,4 @@ async function deleteTravel(id) {
     }
 }
 
-module.exports = { getTravels, insertTravel, deleteTravel };
+module.exports = { getDiscounts, insertDiscount, deleteDiscount };
