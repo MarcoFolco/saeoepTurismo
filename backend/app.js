@@ -8,7 +8,7 @@ require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/admin/login');
-var newsRouter = require('./routes/admin/news');
+var travelsRouter = require('./routes/admin/travels');
 
 
 var app = express();
@@ -46,7 +46,7 @@ app.use('/', indexRouter);
 // Admin
 app.use('/admin/login', loginRouter);
 
-app.use('/admin/news', secured, newsRouter);
+app.use('/admin/travels', secured, travelsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -13,7 +13,11 @@
     <div class="bg"></div>
     <header class="container p-0 mt-3">
         {{#if user}}
-          <div class="logout-button"><a href="/admin/login/logout" class="btn btn-danger"><i class="fas fa-user"></i> <i class="fas fa-sign-out-alt"></i></a></div>
+          <div class="logout-button">
+            <a href="/admin/login/logout" class="btn btn-danger">
+              <i class="fas fa-user"></i> <span>{{user}}</span> </i> <i class="fas fa-sign-out-alt"></i>
+            </a>
+          </div>
         {{/if}}
         <section class="header-title pt-2">
             <a href="./index.html">

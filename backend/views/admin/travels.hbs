@@ -1,0 +1,38 @@
+<section class="travels-section w-100 h-100 p-4">
+    <div class="row">
+        <div class="col title">
+            <h2 class="fw-bold text-center text-white display-3"> Travels management </h2>
+            <div class="text-right">
+                <a href="/admin/travels/add" class="btn btn-success">
+                    <i class="fa fa-plus"></i> New travel
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="header admin-grid">
+        <span class="admin-header--field">#</span>
+        <span class="admin-header--field">Title</span>
+        <span class="admin-header--field">Image name</span>
+        <span class="admin-header--field">Page fk</span>
+        <span class="admin-header--field">Dates</span>
+        <span class="admin-header--field">Assets</span>
+        <span class="admin-header--field">Extras</span>
+        <span class="admin-header--field">Hotel</span>
+        <span class="admin-header--field">Price</span>
+        <span class="admin-header--field">Actions</span>
+    </div>
+    {{#each travels}}
+    <div class="content admin-grid">
+        <div class="admin-header--field"><span>{{id}}</span></div>
+        <div class="admin-header--field"><span>{{title}}</span></div>
+        <div class="admin-header--field"><span>{{img_name}}</span></div>
+        <div class="admin-header--field"><span>{{page_fk}}</span></div>
+        <div class="admin-header--field"><span>{{dates}}</span></div>
+        <div class="admin-header--field"><span>{{assets}}</span></div>
+        <div class="admin-header--field"><span>{{extras}}</span></div>
+        <div class="admin-header--field"><span>{{hotel}}</span></div>
+        <div class="admin-header--field"><span>${{price}}</span></div>
+        <div class="admin-header--field"><span><i class="fa fa-pencil" style="margin-right: 15px;"></i><i class="fa fa-trash"></i></span></div>
+    </div>
+    {{/each}}
+</section>

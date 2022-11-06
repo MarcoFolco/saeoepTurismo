@@ -1,0 +1,67 @@
+<section class="form-add w-100 h-100 p-4">
+    <h2 class="fw-bold text-center text-white display-3">
+        Add a new travel<br/>
+    </h2>
+    <form class="needs-validation" noValidate action="/admin/travels/add" method="post">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputTitle" placeholder="Title" name="title" required/>
+            <label for="inputTitle" class="text-secondary fw-bold fs-6">Title</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputImg" placeholder="Image name" name="img_name" required/>
+            <label for="inputImg" class="text-secondary fw-bold fs-6">Image name</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control fs-4" id="inputPage" placeholder="Page ID" name="page_fk" required/>
+            <label for="inputPage" class="text-secondary fw-bold fs-6">Page ID (FK)</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputDates" placeholder="Dates" name="dates" required/>
+            <label for="inputDates" class="text-secondary fw-bold fs-6">Dates</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputAssets" placeholder="Assets" name="assets" required/>
+            <label for="inputAssets" class="text-secondary fw-bold fs-6">Assets</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputExtras" placeholder="Extras" name="extras"/>
+            <label for="inputExtras" class="text-secondary fw-bold fs-6">Extras</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputHotel" placeholder="Hotel" name="hotel" required/>
+            <label for="inputHotel" class="text-secondary fw-bold fs-6">Hotel</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control fs-4" id="inputPrice" placeholder="Price" name="price" required/>
+            <label for="inputPrice" class="text-secondary fw-bold fs-6">Price</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <button type="submit" class="btn fs-4 text-white fw-bold">Create travel</button>
+        <a href="/admin/travels" class="btn fs-4 text-white fw-bold">
+            <i class="fa fa-times"></i> Cancel
+        </a>
+    </form>
+    {{#if error}}
+        <small class="fs-5 fw-bold" style="color: red;">{{message}}</small>
+    {{/if}}
+</section>

@@ -53,6 +53,14 @@ header .logout-button {
   top: 5px;
 }
 
+header .logout-button a span {
+  display:inline-block;
+  max-width: 100px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  line-height: 12px;
+}
+
 div.bg {
   background: url(/images/page-bg.jpg) no-repeat;
   background-position: center;
@@ -66,13 +74,68 @@ div.bg {
   z-index: -1;
 }
 
-section.form-contact form button[type="submit"] {
+section.form-contact form button[type="submit"], section.form-add form button[type="submit"] {
   background-color: rgba(0, 46, 250, 0.15);
   box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
+}
+
+section.form-add form a.btn {
+  background-color: rgba(214, 18, 18, 0.45);
+  box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
+}
+
+section.form-contact form button[type="submit"]:hover, section.form-add form button[type="submit"]:hover {
+  background-color: rgba(0, 46, 250, 0.45);
+}
+
+section.form-add form a.btn:hover {
+  background-color: rgba(214, 18, 18, 0.8);
 }
 
 section.form-contact h2 small {
   background-color: rgba(0, 46, 250, 0.15);
   box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
   border-radius: 15px;
+}
+
+.travels-section .admin-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 15px;
+}
+
+.travels-section .content {
+  margin-top: 15px;
+}
+
+.travels-section .header {
+  margin-top: 15px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.admin-header--field {
+  background-color: rgba(47, 79, 110, 0.5);
+  border-radius: 5px;
+  box-shadow: 0px 5px 5px 0 rgba(0,0,0,0.4);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-height: 100px;
+  overflow: scroll;
+  min-height: min-content;
+}
+
+.admin-header--field span {
+  max-height: 100%;
+}
+
+.admin-header--field::-webkit-scrollbar {
+  display: none;
 }
