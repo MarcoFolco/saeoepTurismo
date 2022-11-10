@@ -17,7 +17,7 @@ async function insertTravel(obj) {
     }
 }
 
-async function deleteTravel(id) {
+async function deleteTravelById(id) {
     try {
         var query = "delete from travels where id = ? ";
         var rows = await pool.query(query, [id]);
@@ -28,4 +28,27 @@ async function deleteTravel(id) {
     }
 }
 
-module.exports = { getTravels, insertTravel, deleteTravel };
+async function getTravelById(id) {
+    try {
+        var query = "select * from travels where id = ?";
+        var rows = await pool.query(query, [id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+async function editTravelById(obj, id) {
+    try {
+        var query = "update travels set ? where id = ?";
+        var rows = await pool.query(query, [obj,id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+}
+
+module.exports = { getTravels, insertTravel, deleteTravelById, getTravelById, editTravelById };

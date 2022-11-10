@@ -119,6 +119,13 @@ section.form-contact h2 small {
   color: white;
 }
 
+.admin-navbar.admin-grid a.btn.admin-header--field.active {
+  background-color: rgba(47, 79, 110, 0.9);
+  color: white;
+  border: none;
+  box-shadow: 0px 5px 5px 1px rgba(0,0,0,0.7);
+}
+
 .dashboard-section .content {
   margin-top: 15px;
 }
@@ -148,6 +155,10 @@ section.form-contact h2 small {
 
 .admin-header--field span {
   max-height: 100%;
+}
+
+.admin-header--field span a {
+  color: white;
 }
 
 .admin-header--field::-webkit-scrollbar {

@@ -12,6 +12,7 @@ var travelsRouter = require('./routes/admin/travels');
 var discountsRouter = require('./routes/admin/discounts');
 var pagesRouter = require('./routes/admin/pages');
 var enterprisesRouter = require('./routes/admin/enterprises');
+const { handlebars } = require('hbs');
 
 
 var app = express();
@@ -25,6 +26,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+  // app.locals.isCurrentUrl = (tabName) => {
+  //   return req.url.split('/').includes(tabName);
+  // }
+  app.locals.currentUrl = req.url;
+  next();
+});
+
+handlebars.registerHelper("isActiveUrl", (tabName) => {
+  return app.locals.currentUrl.split('/').includes(tabName) ? 'active' : '';
+})
 
 app.use(session({
   secret: 'qX7W59Nc&fz#',

@@ -1,0 +1,22 @@
+<section class="form-add w-100 h-100 p-4">
+    <h2 class="fw-bold text-center text-white display-3">
+        Edit page<br/>
+    </h2>
+    <form class="needs-validation" noValidate action="/admin/pages/edit" method="post">
+        <input type="hidden" value="{{page.id}}" name="id">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputName" placeholder="Name" name="name" value="{{page.name}}" required/>
+            <label for="inputName" class="text-secondary fw-bold fs-6">Name</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <button type="submit" class="btn fs-4 text-white fw-bold">Edit page</button>
+        <a href="/admin/pages" class="btn fs-4 text-white fw-bold">
+            <i class="fa fa-times"></i> Cancel
+        </a>
+    </form>
+    {{#if error}}
+        <small class="fs-5 fw-bold" style="color: red;">{{message}}</small>
+    {{/if}}
+</section>

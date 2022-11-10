@@ -42,4 +42,40 @@ router.post('/add', async (req, res, next) => {
     }
 });
 
+router.get('/delete/:id', async (req, res, next) => {
+    var id = req.params.id;
+    await discountsModel.deleteDiscountById(id);
+    res.redirect('/admin/discounts');
+});
+
+router.get('/edit/:id', async (req, res, next) => {
+    let id = req.params.id;
+    let discount = await discountsModel.getDiscountById(id);
+    res.render('admin/editDiscount', {
+        layout: 'admin/layout',
+        discount: discount[0],
+        user: req.session.username,
+    });
+});
+
+router.post('/edit', async (req, res, next) => {
+    try {
+        let obj = {
+            enterprise_fk: req.body.enterprise_fk,
+            places: req.body.places,
+            value: req.body.value,
+        };
+        await discountsModel.editDiscountById(obj, req.body.id);
+        res.redirect('/admin/discounts');
+    } catch (error) {
+        console.log(error);
+        res.render('admin/editDiscount', {
+            layout: 'admin/layout',
+            error: true,
+            message: 'The discount was not edited',
+            user: req.session.username,
+        });
+    }
+});
+
 module.exports = router;

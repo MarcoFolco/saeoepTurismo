@@ -17,7 +17,7 @@ async function inserPages(obj) {
     }
 }
 
-async function deletePages(id) {
+async function deletePageById(id) {
     try {
         var query = "delete from pages where id = ? ";
         var rows = await pool.query(query, [id]);
@@ -28,4 +28,28 @@ async function deletePages(id) {
     }
 }
 
-module.exports = { getPages, inserPages, deletePages };
+
+async function getPageById(id) {
+    try {
+        var query = "select * from pages where id = ?";
+        var rows = await pool.query(query, [id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+async function editPageById(obj, id) {
+    try {
+        var query = "update pages set ? where id = ?";
+        var rows = await pool.query(query, [obj,id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+}
+
+module.exports = { getPages, inserPages, deletePageById, getPageById, editPageById };

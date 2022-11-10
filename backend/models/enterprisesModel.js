@@ -6,7 +6,7 @@ async function getEnterprises() {
     return rows;
 }
 
-async function inserentErprises(obj) {
+async function insertEnterprises(obj) {
     try {
         var query = "insert into enterprises set ? ";
         var rows = await pool.query(query, [obj]);
@@ -17,7 +17,7 @@ async function inserentErprises(obj) {
     }
 }
 
-async function deleteEnterprises(id) {
+async function deleteEnterpriseById(id) {
     try {
         var query = "delete from enterprises where id = ? ";
         var rows = await pool.query(query, [id]);
@@ -28,4 +28,27 @@ async function deleteEnterprises(id) {
     }
 }
 
-module.exports = { getEnterprises, inserentErprises, deleteEnterprises };
+async function getEnterpriseById(id) {
+    try {
+        var query = "select * from enterprises where id = ?";
+        var rows = await pool.query(query, [id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+async function editEnterpriseById(obj, id) {
+    try {
+        var query = "update enterprises set ? where id = ?";
+        var rows = await pool.query(query, [obj,id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+}
+
+module.exports = { getEnterprises, insertEnterprises, deleteEnterpriseById, getEnterpriseById, editEnterpriseById };

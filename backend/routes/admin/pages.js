@@ -42,4 +42,38 @@ router.post('/add', async (req, res, next) => {
     }
 });
 
+router.get('/delete/:id', async (req, res, next) => {
+    var id = req.params.id;
+    await pagesModel.deletePageById(id);
+    res.redirect('/admin/pages');
+});
+
+router.get('/edit/:id', async (req, res, next) => {
+    let id = req.params.id;
+    let page = await pagesModel.getPageById(id);
+    res.render('admin/editPage', {
+        layout: 'admin/layout',
+        page: page[0],
+        user: req.session.username,
+    });
+});
+
+router.post('/edit', async (req, res, next) => {
+    try {
+        let obj = {
+            name: req.body.name,
+        };
+        await pagesModel.editPageById(obj, req.body.id);
+        res.redirect('/admin/pages');
+    } catch (error) {
+        console.log(error);
+        res.render('admin/editPage', {
+            layout: 'admin/layout',
+            error: true,
+            message: 'The page was not edited',
+            user: req.session.username,
+        });
+    }
+});
+
 module.exports = router;

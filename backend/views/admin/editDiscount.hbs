@@ -1,0 +1,36 @@
+<section class="form-add w-100 h-100 p-4">
+    <h2 class="fw-bold text-center text-white display-3">
+        Edit discount<br/>
+    </h2>
+    <form class="needs-validation" noValidate action="/admin/discounts/edit" method="post">
+        <input type="hidden" value="{{discount.id}}" name="id">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control fs-4" id="inputEnterprise" placeholder="Enterprise ID" name="enterprise_fk" value="{{discount.enterprise_fk}}" required/>
+            <label for="inputEnterprise" class="text-secondary fw-bold fs-6">Enterprise ID (FK)</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control fs-4" id="inputPlaces" placeholder="Places" name="places" value="{{discount.places}}" required/>
+            <label for="inputPlaces" class="text-secondary fw-bold fs-6">Places</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control fs-4" id="inputPrice" placeholder="Value" name="value" value="{{discount.value}}" required/>
+            <label for="inputPrice" class="text-secondary fw-bold fs-6">Value</label>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <button type="submit" class="btn fs-4 text-white fw-bold">Edit discount</button>
+        <a href="/admin/discounts" class="btn fs-4 text-white fw-bold">
+            <i class="fa fa-times"></i> Cancel
+        </a>
+    </form>
+    {{#if error}}
+        <small class="fs-5 fw-bold" style="color: red;">{{message}}</small>
+    {{/if}}
+</section>

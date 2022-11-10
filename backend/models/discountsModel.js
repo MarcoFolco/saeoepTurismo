@@ -17,7 +17,7 @@ async function insertDiscount(obj) {
     }
 }
 
-async function deleteDiscount(id) {
+async function deleteDiscountById(id) {
     try {
         var query = "delete from discounts where id = ? ";
         var rows = await pool.query(query, [id]);
@@ -28,4 +28,27 @@ async function deleteDiscount(id) {
     }
 }
 
-module.exports = { getDiscounts, insertDiscount, deleteDiscount };
+async function getDiscountById(id) {
+    try {
+        var query = "select * from discounts where id = ?";
+        var rows = await pool.query(query, [id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+async function editDiscountById(obj, id) {
+    try {
+        var query = "update discounts set ? where id = ?";
+        var rows = await pool.query(query, [obj,id]);
+        return rows;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+
+}
+
+module.exports = { getDiscounts, insertDiscount, deleteDiscountById, getDiscountById, editDiscountById };

@@ -32,7 +32,12 @@
         <div class="admin-header--field"><span>{{extras}}</span></div>
         <div class="admin-header--field"><span>{{hotel}}</span></div>
         <div class="admin-header--field"><span>${{price}}</span></div>
-        <div class="admin-header--field"><span><i class="fa fa-pencil" style="margin-right: 15px;"></i><i class="fa fa-trash"></i></span></div>
+        <div class="admin-header--field">
+            <span>
+                <a href="/admin/travels/edit/{{id}}"><i class="fa fa-pencil" style="margin-right: 15px;"></i></a>
+                <a href="/admin/travels/delete/{{id}}"><i class="fa fa-trash"></i></a>
+            </span>
+        </div>
     </div>
     {{/each}}
 </section>
