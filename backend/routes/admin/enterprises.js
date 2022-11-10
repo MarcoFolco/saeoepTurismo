@@ -6,7 +6,6 @@ router.get('/', async function(req, res, next) {
     var enterprises = await enterprisesModel.getEnterprises();
     res.render('admin/enterprises', {
         layout: 'admin/layout',
-        user: req.session.username,
         enterprises,
     });
 });
@@ -14,7 +13,6 @@ router.get('/', async function(req, res, next) {
 router.get('/add', (req, res, next) => {
     res.render('admin/addEnterprise', {
         layout: 'admin/layout',
-        user: req.session.username,
     });
 });
 
@@ -26,7 +24,6 @@ router.post('/add', async (req, res, next) => {
         } else {
             res.render('admin/addEnterprise', {
                 layout: 'admin/layout',
-                user: req.session.username,
                 error: true,
                 message: 'All the fields are required',
             });
@@ -37,7 +34,6 @@ router.post('/add', async (req, res, next) => {
             layout: 'admin/layout',
             error: true,
             message: 'The enterprise was not inserted',
-            user: req.session.username,
         })
     }
 });
@@ -54,7 +50,6 @@ router.get('/edit/:id', async (req, res, next) => {
     res.render('admin/editEnterprise', {
         layout: 'admin/layout',
         enterprise: enterprise[0],
-        user: req.session.username,
     });
 });
 
@@ -71,7 +66,6 @@ router.post('/edit', async (req, res, next) => {
             layout: 'admin/layout',
             error: true,
             message: 'The enterprise was not edited',
-            user: req.session.username,
         });
     }
 });
