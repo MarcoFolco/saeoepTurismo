@@ -2,7 +2,8 @@
     <h2 class="fw-bold text-center text-white display-3">
         Edit travel<br/>
     </h2>
-    <form class="needs-validation" noValidate action="/admin/travels/edit" method="post">
+    <form class="needs-validation" noValidate action="/admin/travels/edit" method="post"
+    enctype="multipart/form-data">
         <input type="hidden" value="{{travel.id}}" name="id">
         <div class="form-floating mb-3">
             <input type="text" class="form-control fs-4" id="inputTitle" placeholder="Title" name="title" value="{{travel.title}}" required/>
@@ -11,9 +12,17 @@
                 This field is required
             </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control fs-4" id="inputImg" placeholder="Image name" name="img_name" value="{{travel.img_name}}" required/>
-            <label for="inputImg" class="text-secondary fw-bold fs-6">Image name</label>
+        <div class="mb-3">
+            <label for="inputImg" class="text-secondary bg-white fw-bold fs-6 rounded p-1 mb-1">Image</label>
+            <input type="file" class="form-control fs-4" id="inputImg" name="img"/>
+            <div class="invalid-feedback fs-5 fw-bold">
+                This field is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <input type="checkbox" class="fs-4" id="imgDelete" name="delete_img" value="1"/>
+            <label for="imgDelete" class="text-secondary bg-white fw-bold fs-6 rounded p-1 mb-1">Delete current image?</label>
+            <input type="hidden" name="original_img" value="{{travel.img_id}}">
             <div class="invalid-feedback fs-5 fw-bold">
                 This field is required
             </div>

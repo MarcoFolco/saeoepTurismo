@@ -5,7 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 require('dotenv').config()
+var fileUpload = require('express-fileupload');
+var cloudinary = require('cloudinary').v2;
+var cors = require('cors');
 
+var apiRouter = require('./routes/api');
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/admin/login');
 var travelsRouter = require('./routes/admin/travels');
@@ -14,13 +18,19 @@ var pagesRouter = require('./routes/admin/pages');
 var enterprisesRouter = require('./routes/admin/enterprises');
 const { handlebars } = require('hbs');
 
-
 var app = express();
+cloudinary.config({ 
+  cloud_name: 'ddiyjxage', 
+  api_key: '363172166911426', 
+  api_secret: 'I0CuuqhA0Cg_Kl93JyOQKQZfLl8' 
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use('/api', cors(), apiRouter);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +42,11 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}))
 
 app.use((req, res, next) => {
   // app.locals.isCurrentUrl = (tabName) => {

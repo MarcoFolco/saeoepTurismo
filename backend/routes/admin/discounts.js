@@ -49,7 +49,7 @@ router.get('/edit/:id', async (req, res, next) => {
     let discount = await discountsModel.getDiscountById(id);
     res.render('admin/editDiscount', {
         layout: 'admin/layout',
-        discount: discount[0],
+        discount: discount,
     });
 });
 

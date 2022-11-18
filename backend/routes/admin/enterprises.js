@@ -49,7 +49,7 @@ router.get('/edit/:id', async (req, res, next) => {
     let enterprise = await enterprisesModel.getEnterpriseById(id);
     res.render('admin/editEnterprise', {
         layout: 'admin/layout',
-        enterprise: enterprise[0],
+        enterprise: enterprise,
     });
 });
 

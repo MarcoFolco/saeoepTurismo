@@ -49,7 +49,7 @@ router.get('/edit/:id', async (req, res, next) => {
     let page = await pagesModel.getPageById(id);
     res.render('admin/editPage', {
         layout: 'admin/layout',
-        page: page[0],
+        page: page,
     });
 });
 

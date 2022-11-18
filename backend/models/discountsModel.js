@@ -32,7 +32,7 @@ async function getDiscountById(id) {
     try {
         var query = "select * from discounts where id = ?";
         var rows = await pool.query(query, [id]);
-        return rows;
+        return rows ? rows[0] : null;
     } catch (error) {
         console.log(error);
         throw error;

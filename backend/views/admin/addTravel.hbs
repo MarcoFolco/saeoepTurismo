@@ -2,7 +2,8 @@
     <h2 class="fw-bold text-center text-white display-3">
         Add a new travel<br/>
     </h2>
-    <form class="needs-validation" noValidate action="/admin/travels/add" method="post">
+    <form class="needs-validation" noValidate action="/admin/travels/add" method="post"
+    enctype="multipart/form-data">
         <div class="form-floating mb-3">
             <input type="text" class="form-control fs-4" id="inputTitle" placeholder="Title" name="title" required/>
             <label for="inputTitle" class="text-secondary fw-bold fs-6">Title</label>
@@ -10,9 +11,9 @@
                 This field is required
             </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control fs-4" id="inputImg" placeholder="Image name" name="img_name" required/>
-            <label for="inputImg" class="text-secondary fw-bold fs-6">Image name</label>
+        <div class="mb-3">
+            <label for="inputImg" class="text-secondary bg-white fw-bold fs-6 rounded p-1 mb-1">Image</label>
+            <input type="file" class="form-control fs-4" id="inputImg" placeholder="Image name" name="img" required/>
             <div class="invalid-feedback fs-5 fw-bold">
                 This field is required
             </div>
