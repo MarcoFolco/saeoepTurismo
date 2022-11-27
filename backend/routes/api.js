@@ -84,6 +84,7 @@ router.post('/contact', async (req, res, next) => {
             message: 'Message sent',
         });
     } catch (error) {
+        console.log(error)
         res.status(201).json({
             error: true,
             message: 'Failed to send the message'
