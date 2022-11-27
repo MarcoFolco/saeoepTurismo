@@ -64,7 +64,7 @@ router.post('/contact', async (req, res, next) => {
             subject: 'Message received through Saeoepturismo',
             html: `${req.body.name} has contacted you through the web site of Saeoepturismo
             to request further information. The requester's mail and cell phone are 
-            ${req.body.email} and ${req.body.phone}. ${req.body.name} also made the 
+            ${req.body.email} and ${req.body.phone}. ${req.body.name} also wrote the 
             following comment: "${req.body.message}"`
         };
     
