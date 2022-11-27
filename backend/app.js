@@ -8,6 +8,7 @@ require('dotenv').config()
 var fileUpload = require('express-fileupload');
 var cloudinary = require('cloudinary').v2;
 var cors = require('cors');
+var bodyParser = require('body-parser');
 
 var apiRouter = require('./routes/api');
 var indexRouter = require('./routes/index');
@@ -30,6 +31,10 @@ cloudinary.config({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
 app.use('/api', cors(), apiRouter);
 app.use(logger('dev'));
 app.use(express.json());

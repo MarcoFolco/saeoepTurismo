@@ -1,8 +1,43 @@
 import React from "react";
 import "../styles/components/pages/ContactPage.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
 const ContactPage = (props) => {
+
+    const initialForm = {
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+    };
+
+    const [sending, setSending] = useState(false);
+    const [msg, setMsg] = useState('');
+    const [error, setError] = useState(false);
+    const [formData, setFormData] = useState(initialForm);
+
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setFormData(oldData => ({
+            ...oldData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        setMsg('');
+        setSending(true);
+        const response = await axios.post('http://localhost:3000/api/contact', formData);
+        setSending(false);
+        setMsg(response.data.message);
+        if (response.data.error === false) {
+            setFormData(initialForm);
+            setError(false);
+        } else setError(true);
+    };
+
     useEffect(() => {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         const forms = document.querySelectorAll('.needs-validation')
@@ -11,11 +46,14 @@ const ContactPage = (props) => {
         Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
+                event.preventDefault();
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                setMsg('');
+                setError(false);
+            } else {
+                form.classList.remove('was-validated');
             }
-    
-            form.classList.add('was-validated')
         }, false)
         })
     });
@@ -26,23 +64,29 @@ const ContactPage = (props) => {
                     Contacto via mail<br/>
                     <small className="fs-2 text-white-50">Por favor complete los datos del formulario para contactarse</small>
                 </h2>
-                <form className="needs-validation" noValidate>
+                <form className="needs-validation" onSubmit={handleSubmit} noValidate>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control fs-4" id="name" placeholder="George" required/>
+                        <input type="text" className="form-control fs-4" 
+                               id="name" name="name" placeholder="George"
+                               value={formData.name} onChange={handleChange} required/>
                         <label htmlFor="name" className="text-secondary fw-bold fs-6">Nombre</label>
                         <div className="invalid-feedback fs-5 fw-bold">
                             Este campo es requerido
                         </div>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="email" className="form-control fs-4" id="emailAddress" placeholder="name@example.com" required/>
+                        <input type="email" className="form-control fs-4" 
+                               id="emailAddress" name="email" placeholder="name@example.com" 
+                               value={formData.email} onChange={handleChange} required/>
                         <label htmlFor="emailAddress" className="text-secondary fw-bold fs-6">Correo Electrónico</label>
                         <div className="invalid-feedback fs-5 fw-bold">
                             Este campo es requerido
                         </div>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control fs-4" id="phone" placeholder="name@example.com" required/>
+                        <input type="text" className="form-control fs-4" 
+                               id="phone" name="phone" placeholder="name@example.com" 
+                               value={formData.phone} onChange={handleChange} required/>
                         <label htmlFor="phone" className="text-secondary fw-bold fs-6">Teléfono</label>
                         <div className="invalid-feedback fs-5 fw-bold">
                             Este campo es requerido
@@ -50,11 +94,15 @@ const ContactPage = (props) => {
                     </div>
                     <div className="input-group mb-4">
                         <span className="input-group-text">Mensaje</span>
-                        <textarea className="form-control fs-4" rows="5" required></textarea>
+                        <textarea className="form-control fs-4" 
+                                  rows="5" name="message"
+                                  value={formData.message} onChange={handleChange} required></textarea>
                         <div className="invalid-feedback fs-5 fw-bold">
                             Este campo es requerido
                         </div>
                     </div>
+                    {sending ? <div className="mb-4"><span className="btn bg-info fs-6 text-white fw-bold">Sending...</span><span className="loader loader-small ms-2"></span></div> : null}
+                    {msg ? <div className="mb-4"><span className={`btn ${error ? 'bg-danger' : 'bg-success'} fs-6 text-white fw-bold`}>{msg}</span></div> : null}
                     <button type="submit" className="btn fs-4 text-white fw-bold">Enviar</button>
                 </form>
             </section>

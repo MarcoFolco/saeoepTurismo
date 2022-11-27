@@ -33,7 +33,7 @@ const Discounts = (props) => {
                             <p className="fs-2 fw-bold text-center"><span className="ps-3 pe-3">Destino</span></p>
                             <p className="fs-2 fw-bold text-center"><span className="ps-3 pe-3">Descuento</span></p>
                         </div>
-                        {discounts.map(discount => <DiscountItem enterprise_name={discount.enterprise_name}
+                        {discounts.map(discount => <DiscountItem key={discount.id} enterprise_name={discount.enterprise_name}
                                                     places={discount.places} value={discount.value}/>)}
                      </div>
                 )}
